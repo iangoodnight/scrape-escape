@@ -1,0 +1,24 @@
+{
+  "name": "scrape-escape",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "json2csv": "^4.5.4",
+    "osmosis": "^1.1.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iangoodnight/scrape-escape.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iangoodnight/scrape-escape/issues"
+  },
+  "homepage": "https://github.com/iangoodnight/scrape-escape#readme"
+}
