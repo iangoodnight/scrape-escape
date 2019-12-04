@@ -33,7 +33,7 @@ function gimmeDat(url) {
 			// load yellowpages
 			.get(url)
 			// Find all entries
-			.paginate('div.pagination > ul > li > a.next', 50)
+			.paginate('div.pagination > ul > li > a.next', 25)
 			.delay(240000)
 			.find('div.info')
 			// Create an object with Company and URL
