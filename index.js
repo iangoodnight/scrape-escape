@@ -3,20 +3,14 @@ var osmosis = require('osmosis');
 const fs = require('fs');
 const converter = require('json2csv');
 
-
-const fields = ['name', 'url'];
-const opts = { fields };
-const transformOpts = { highWaterMark: 8192 };
-
-// const asyncParser = new AsyncParser(opts, transformOpts);
 // Grabbing query from command line for testing
 var query = process.argv[2];
 // Grabbing location from command line for testing
 var location = process.argv[3];
-var page = process.argv[4];
+var page = process.argv[4] || 1;
 // URL for testing
 var url = "https://www.yellowpages.com/search?search_terms=" + query + "&geo_location_terms=" + location + "&page=" + page;
-osmosis.config('tries', 5);
+osmosis.config('tries', 6);
 osmosis.config('ignore_http_errors', 1);
 osmosis.config('concurrency', 1);
 // osmosis.config('proxy','http://50.246.4.13:54325');
@@ -33,8 +27,8 @@ function gimmeDat(url) {
 			// load yellowpages
 			.get(url)
 			// Find all entries
-			.paginate('div.pagination > ul > li > a.next', 25)
-			.delay(240000)
+			.paginate('div.pagination > ul > li > a.next', 2)
+			.delay(60000)
 			.find('div.info')
 			// Create an object with Company and URL
 			.set({
