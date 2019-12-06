@@ -27,8 +27,8 @@ function gimmeDat(url) {
 			// load yellowpages
 			.get(url)
 			// Find all entries
-			.paginate('div.pagination > ul > li > a.next', 2)
-			.delay(60000)
+			.paginate('div.pagination > ul > li > a.next', 1)
+			.delay(30000)
 			.find('div.info')
 			// Create an object with Company and URL
 			.set({
@@ -36,7 +36,7 @@ function gimmeDat(url) {
 				url: 'div > div.links a.track-visit-website@href'
 			})
 			.follow('h2 > a@href')
-			.error()
+			.error(console.log)
 			.find('div.business-card-footer')
 			.set({
 				email: 'a.email-business@href'
@@ -74,6 +74,6 @@ gimmeDat(url).then(response => {
 	var fields = ['name', 'url', 'email'];
 	var parser = new converter.Parser({ fields });
 	var csvstr = parser.parse(response);
-	fs.writeFileSync('./output.csv', csvstr);
+	fs.appendFileSync('./output.csv', csvstr);
 	// sort(response);
 })
